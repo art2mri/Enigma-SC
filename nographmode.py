@@ -376,15 +376,15 @@ def modal_singularity():
 		
 	before = str(file_paths)
 		
-	with open(enigma_folder+'/vertebral_labeling.simg/spine.py', 'r') as arquivo_leitura:
-		linhas = arquivo_leitura.readlines()
-	with open(enigma_folder+'/vertebral_labeling.simg/spine.py', 'w') as arquivo_escrita:
-		for linha in linhas:
-			if 'enigma_folder=' in linha:
-				linha_modificada = linha.replace('enigma_folder=', f"enigma_folder='{enigma_folder}'\n")
-				arquivo_escrita.write(linha_modificada)
-			else:
-				arquivo_escrita.write(linha)		
+	#with open(enigma_folder+'/vertebral_labeling.simg/spine.py', 'r') as arquivo_leitura:
+	#	linhas = arquivo_leitura.readlines()
+	#with open(enigma_folder+'/vertebral_labeling.simg/spine.py', 'w') as arquivo_escrita:
+	#	for linha in linhas:
+	#		if 'enigma_folder=' in linha:
+	#			linha_modificada = linha.replace('enigma_folder=', f"enigma_folder='{enigma_folder}'\n")
+	#			arquivo_escrita.write(linha_modificada)
+	#		else:
+	#			arquivo_escrita.write(linha)		
         	            	 		
 
 	exit_code = os.system("singularity --version")
