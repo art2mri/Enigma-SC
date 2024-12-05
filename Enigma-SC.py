@@ -48,23 +48,6 @@ from tkinter import ttk
 
 #############################
 
-def get_pass():
-	password = getpass.getpass('Enter the [sudo] password:')
-	wrap = "sudo -S ls"
-	try:
-		subprocess.run(wrap, shell=True, check=True, input=password.encode(),stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	except subprocess.CalledProcessError as e:
-		print("\033[91m\033[1mIncorrect password. Please try again.\033[0m")
-		password = getpass.getpass('Enter the [sudo] password:')
-	try:
-		subprocess.run(wrap, shell=True, check=True, input=password.encode(),stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	except subprocess.CalledProcessError as e:
-		print("\033[91m\033[1mIncorrect password. Aborting Function.\033[0m")
-		raise SystemExit(1)
-	return password
-	
-#############################
-
 def get_exit(command_a, command_b):
 		exit2 = subprocess.run(command_a, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
 		if exit2 != 0:
