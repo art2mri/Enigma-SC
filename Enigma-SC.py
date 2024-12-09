@@ -636,7 +636,6 @@ def docker():
 
 
 	for idx,i in enumerate(file_paths):
-		'''
 		command53='docker cp '+str(i)+'/'+os.path.basename(str(i))+'.nii.gz vertebral_labeling:/home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz'
 		command54='sudo -S docker cp '+str(i)+'/'+os.path.basename(str(i))+'.nii.gz vertebral_labeling:/home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz'
 		os.system(command53)
@@ -685,7 +684,6 @@ def docker():
 		command575='docker exec -it vertebral_labeling rm -f /home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz'
 		command676='sudo docker exec -it vertebral_labeling rm -f /home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz'
 		os.system(command575)
-		'''
 					
 		os.system('docker cp '+str(i)+'/'+os.path.basename(str(i))+'.nii.gz vertebral_labeling:/'+os.path.basename(str(i))+'.nii.gz')
 		os.system('docker cp '+str(i)+'/'+os.path.basename(str(i))+'_seg_labeled.nii.gz vertebral_labeling:/'+os.path.basename(str(i))+'_seg_labeled.nii.gz')
