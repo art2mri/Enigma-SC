@@ -48,6 +48,23 @@ from tkinter import ttk
 
 #############################
 
+def get_pass():
+	password = getpass.getpass('Enter the [sudo] password:')
+	wrap = "sudo -S ls"
+	try:
+		subprocess.run(wrap, shell=True, check=True, input=password.encode(),stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	except subprocess.CalledProcessError as e:
+		print("\033[91m\033[1mIncorrect password. Please try again.\033[0m")
+		password = getpass.getpass('Enter the [sudo] password:')
+	try:
+		subprocess.run(wrap, shell=True, check=True, input=password.encode(),stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	except subprocess.CalledProcessError as e:
+		print("\033[91m\033[1mIncorrect password. Aborting Function.\033[0m")
+		raise SystemExit(1)
+	return password
+	
+#############################
+
 def get_exit(command_a, command_b):
 		exit2 = subprocess.run(command_a, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
 		if exit2 != 0:
@@ -619,9 +636,9 @@ def docker():
 
 
 	for idx,i in enumerate(file_paths):
-		
-		command53='docker cp '+str(i)+'/'+os.path.basename(str(i))+'.nii.gz vertebral_labeling:/home/datav2/nnUNet_raw/Dataset761_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz'
-		command54='sudo -S docker cp '+str(i)+'/'+os.path.basename(str(i))+'.nii.gz vertebral_labeling:/home/datav2/nnUNet_raw/Dataset761_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz'
+		'''
+		command53='docker cp '+str(i)+'/'+os.path.basename(str(i))+'.nii.gz vertebral_labeling:/home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz'
+		command54='sudo -S docker cp '+str(i)+'/'+os.path.basename(str(i))+'.nii.gz vertebral_labeling:/home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz'
 		os.system(command53)
 		command55='docker start vertebral_labeling'
 		command56='docker start vertebral_labeling'
@@ -633,7 +650,7 @@ def docker():
 		comando_12 = 'docker exec -it vertebral_labeling python3 /home/scripts/cuda.py'
 		comando_2 = 'docker exec -it vertebral_labeling python3 /home/scripts/cpu.py'
 		command_1 = 'docker exec -it vertebral_labeling python3 /home/scripts/cuda.py'
-		file_to_check = '/home/datav2/inference/761_SCT/preds/'+os.path.basename(str(i))+'.nii.gz'
+		file_to_check = '/home/datav2/inference/791_SCT/preds/'+os.path.basename(str(i))+'.nii.gz'
 		command_21 = 'docker exec -it vertebral_labeling python3 /home/scripts/cpu.py'
 		command_22 = 'docker exec -it vertebral_labeling python3 /home/scripts/cpu.py'
 		exit16 = subprocess.run(comando_11, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
@@ -659,21 +676,22 @@ def docker():
 				os.system('docker exec -it vertebral_labeling python3 /home/scripts/cpu.py')
 			else:
 				os.system('docker exec -it vertebral_labeling python3 /home/scripts/cpu.py')
-		command555='docker exec -it vertebral_labeling chmod -R 777 /home/datav2/inference/761_SCT/preds/'+os.path.basename(str(i))+'.nii.gz'
-		command666='docker exec -it vertebral_labeling chmod -R 777 /home/datav2/inference/761_SCT/preds/'+os.path.basename(str(i))+'.nii.gz'
+		command555='docker exec -it vertebral_labeling chmod -R 777 /home/datav2/inference/791_SCT/preds/'+os.path.basename(str(i))+'.nii.gz'
+		command666='docker exec -it vertebral_labeling chmod -R 777 /home/datav2/inference/791_SCT/preds/'+os.path.basename(str(i))+'.nii.gz'
 		os.system(command555)
-		command515='docker cp vertebral_labeling:/home/datav2/inference/761_SCT/preds/'+os.path.basename(str(i))+'.nii.gz'+' '+str(i)+'/'+os.path.basename(str(i))+'_seg_labeled.nii.gz'
-		command616='sudo docker cp vertebral_labeling:/home/datav2/inference/761_SCT/preds/'+os.path.basename(str(i))+'.nii.gz'+' '+str(i)+'/'+os.path.basename(str(i))+'_seg_labeled.nii.gz'
+		command515='docker cp vertebral_labeling:/home/datav2/inference/791_SCT/preds/'+os.path.basename(str(i))+'.nii.gz'+' '+str(i)+'/'+os.path.basename(str(i))+'_seg_labeled.nii.gz'
+		command616='sudo docker cp vertebral_labeling:/home/datav2/inference/791_SCT/preds/'+os.path.basename(str(i))+'.nii.gz'+' '+str(i)+'/'+os.path.basename(str(i))+'_seg_labeled.nii.gz'
 		os.system(command515)
-		command575='docker exec -it vertebral_labeling rm -f /home/datav2/nnUNet_raw/Dataset761_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz'
-		command676='sudo docker exec -it vertebral_labeling rm -f /home/datav2/nnUNet_raw/Dataset761_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz'
+		command575='docker exec -it vertebral_labeling rm -f /home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz'
+		command676='sudo docker exec -it vertebral_labeling rm -f /home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz'
 		os.system(command575)
-		
+		'''
 					
 		os.system('docker cp '+str(i)+'/'+os.path.basename(str(i))+'.nii.gz vertebral_labeling:/'+os.path.basename(str(i))+'.nii.gz')
 		os.system('docker cp '+str(i)+'/'+os.path.basename(str(i))+'_seg_labeled.nii.gz vertebral_labeling:/'+os.path.basename(str(i))+'_seg_labeled.nii.gz')
 		os.system('docker exec -it vertebral_labeling chmod -R 777 /'+os.path.basename(str(i))+'.nii.gz')
 		os.system('docker exec -it vertebral_labeling chmod -R 777 /'+os.path.basename(str(i))+'_seg_labeled.nii.gz')
+		
 		os.system('docker exec -e SCT_DIR=''/spinalcordtoolbox'' -e PATH=''/spinalcordtoolbox/bin:$PATH'' -it vertebral_labeling sct_qc -i /'+os.path.basename(str(i))+'.nii.gz -s /'+os.path.basename(str(i))+'_seg_labeled.nii.gz'+' -p sct_label_vertebrae')
 		os.system('docker exec -it vertebral_labeling chmod -R 777 qc')
 		os.system('docker cp vertebral_labeling:/qc'+' '+str(i)+'/'+'qc_labeled_'+os.path.basename(str(i)))
@@ -788,12 +806,12 @@ def singularity():
     		raise SystemExit(1)		
 	password = None
 	
-	k = os.listdir(enigma_folder+'/vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset761_SCT/imagesTs/')
+	k = os.listdir(enigma_folder+'/vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/')
 	for i in k:
-		if os.path.isdir(enigma_folder+'/vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset761_SCT/imagesTs/'+str(i)):
-			shutil.rmtree(enigma_folder+'/vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset761_SCT/imagesTs/'+str(i))
+		if os.path.isdir(enigma_folder+'/vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/'+str(i)):
+			shutil.rmtree(enigma_folder+'/vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/'+str(i))
 		else:
-			os.remove(enigma_folder+'/vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset761_SCT/imagesTs/'+str(i))	
+			os.remove(enigma_folder+'/vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/'+str(i))	
 	path = enigma_folder+'/vertebral_labeling.simg/home'
 	dir_list = os.listdir(path)		
 	for i in dir_list:
@@ -806,9 +824,9 @@ def singularity():
 					os.system(command21)
 					
 	for idx,i in enumerate(file_paths):
-		if any(arq.endswith('.nii.gz') for arq in os.listdir('vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset761_SCT/imagesTs/')):
-			command219='rm vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset761_SCT/imagesTs/*nii.gz'
-			command222='sudo -S rm vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset761_SCT/imagesTs/*nii.gz'
+		if any(arq.endswith('.nii.gz') for arq in os.listdir('vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/')):
+			command219='rm vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/*nii.gz'
+			command222='sudo -S rm vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/*nii.gz'
 			exit238 = subprocess.run(command219, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
 			os.system(command219)	
 		#update_progress_bar(idx + 1, len(file_paths))
@@ -818,9 +836,9 @@ def singularity():
 		command69='chmod -R 777 '+enigma_folder+'/'+os.path.basename(str(i))+'.nii.gz'
 		command70='sudo chmod -R 777 '+enigma_folder+'/'+os.path.basename(str(i))+'.nii.gz'
 		os.system(command69)
-		os.system('mv '+os.path.basename(str(i))+'.nii.gz '+'vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset761_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz')	
-		command73='chmod -R 777 vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset761_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz'
-		command74='sudo chmod -R 777 vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset761_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz'
+		os.system('mv '+os.path.basename(str(i))+'.nii.gz '+'vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz')	
+		command73='chmod -R 777 vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz'
+		command74='sudo chmod -R 777 vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/'+os.path.basename(str(i))+'_0000.nii.gz'
 		os.system(command73)
 		try:
 			subprocess.run(["singularity --version"], check=True, shell=True)
@@ -835,7 +853,7 @@ def singularity():
 					subprocess.run(command_12, shell=True)  
 				except subprocess.CalledProcessError:
 					pass
-			dire = 'vertebral_labeling.simg/home/datav2/inference/761_SCT/preds/'
+			dire = 'vertebral_labeling.simg/home/datav2/inference/791_SCT/preds/'
 			file1 = os.path.basename(str(i))+'.nii.gz'
 			way = os.path.join(dire, file1)	     				
 			if os.path.exists(way):
@@ -851,13 +869,13 @@ def singularity():
 		except subprocess.CalledProcessError:
 			print('AUTOMATED LABELING FAILED')			
 
-		command75='chmod -R 777 vertebral_labeling.simg/home/datav2/inference/761_SCT/preds/'+os.path.basename(str(i))+'.nii.gz'
-		command76='sudo chmod -R 777 vertebral_labeling.simg/home/datav2/inference/761_SCT/preds/'+os.path.basename(str(i))+'.nii.gz'			
+		command75='chmod -R 777 vertebral_labeling.simg/home/datav2/inference/791_SCT/preds/'+os.path.basename(str(i))+'.nii.gz'
+		command76='sudo chmod -R 777 vertebral_labeling.simg/home/datav2/inference/791_SCT/preds/'+os.path.basename(str(i))+'.nii.gz'			
 		os.system(command75)
-		os.system('mv -v '+enigma_folder+'/vertebral_labeling.simg/home/datav2/inference/761_SCT/preds/'+os.path.basename(str(i))+'.nii.gz '+enigma_folder+'/vertebral_labeling.simg/home/datav2/inference/761_SCT/preds/'+os.path.basename(str(i))+'_seg_labeled.nii.gz')
-		os.system('rm vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset761_SCT/imagesTs/*nii.gz')
+		os.system('mv -v '+enigma_folder+'/vertebral_labeling.simg/home/datav2/inference/791_SCT/preds/'+os.path.basename(str(i))+'.nii.gz '+enigma_folder+'/vertebral_labeling.simg/home/datav2/inference/791_SCT/preds/'+os.path.basename(str(i))+'_seg_labeled.nii.gz')
+		os.system('rm vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/*nii.gz')
 				
-		os.system('mv '+enigma_folder+'/'+'vertebral_labeling.simg/home/datav2/inference/761_SCT/preds/'+os.path.basename(str(i))+'_seg_labeled.nii.gz '+enigma_folder)			
+		os.system('mv '+enigma_folder+'/'+'vertebral_labeling.simg/home/datav2/inference/791_SCT/preds/'+os.path.basename(str(i))+'_seg_labeled.nii.gz '+enigma_folder)			
 		os.system('mv '+enigma_folder+'/'+os.path.basename(str(i))+'_seg_labeled.nii.gz '+str(i))
 		
 		os.system('cp '+str(i)+'/'+os.path.basename(str(i))+'.nii.gz '+enigma_folder+'/vertebral_labeling.simg/'+os.path.basename(str(i))+'.nii.gz')
@@ -1347,8 +1365,8 @@ def reg_aut_singularity():
 				
 	for idx, i in enumerate(file_paths):
 		if any(arq.endswith('.nii.gz') for arq in os.listdir('vertebral_labeling.simg/home/SCT/')):	
-			command219='rm vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset761_SCT/imagesTs/*nii.gz'
-			command222='sudo -S rm vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset761_SCT/imagesTs/*nii.gz'
+			command219='rm vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/*nii.gz'
+			command222='sudo -S rm vertebral_labeling.simg/home/datav2/nnUNet_raw/Dataset791_SCT/imagesTs/*nii.gz'
 			os.system(command219)
 		if any(arq.endswith('.cache') for arq in os.listdir('vertebral_labeling.simg/home/SCT/')):			
 			command219='rm vertebral_labeling.simg/home/SCT/straightening.cache'
@@ -1702,22 +1720,31 @@ def ext_docker():
 		b1.append(os.path.basename(str(i)))		
 		for j in range(len(v)):
 			if v[j][4] == '1':
-				f = j
-				w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
-				k.append(str(w))
-				b1.append(str(v[f][16]))
+				try:
+					f = j
+					w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
+					k.append(str(w))
+					b1.append(str(v[f][16]))
+				except (ValueError, IndexError):
+					pass	
 		for j in range(len(v)):		
 			if v[j][4] == '2':
-				f = j
-				w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
-				k.append(str(w))
-				b1.append(str(v[f][16]))
+				try:
+					f = j
+					w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
+					k.append(str(w))
+					b1.append(str(v[f][16]))
+				except (ValueError, IndexError):
+					pass 	
 		for j in range(len(v)):
 			if v[j][4] == '3':
-				f = j
-				w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
-				k.append(str(w))
-				b1.append(str(v[f][16]))
+				try:
+					f = j
+					w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
+					k.append(str(w))
+					b1.append(str(v[f][16]))
+				except (ValueError, IndexError):
+					pass	
 		with open(csvf, 'a', newline='') as csv_file:
 			writer = csv.writer(csv_file)
 			writer.writerow(k)
@@ -1890,22 +1917,31 @@ def ext_singularity():
 		b1.append(os.path.basename(str(i)))		
 		for j in range(len(v)):
 			if v[j][4] == '1':
-				f = j
-				w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
-				k.append(str(w))
-				b1.append(str(v[f][16]))
+				try:
+					f = j
+					w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
+					k.append(str(w))
+					b1.append(str(v[f][16]))
+				except (ValueError, IndexError):
+					pass	
 		for j in range(len(v)):		
 			if v[j][4] == '2':
-				f = j
-				w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
-				k.append(str(w))
-				b1.append(str(v[f][16]))
+				try:
+					f = j
+					w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
+					k.append(str(w))
+					b1.append(str(v[f][16]))
+				except (ValueError, IndexError):
+					pass	
 		for j in range(len(v)):
 			if v[j][4] == '3':
-				f = j
-				w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
-				k.append(str(w))
-				b1.append(str(v[f][16]))
+				try:
+					f = j
+					w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
+					k.append(str(w))
+					b1.append(str(v[f][16]))
+				except (ValueError, IndexError):
+					pass	
 		with open(csvf, 'a', newline='') as csv_file:
 			writer = csv.writer(csv_file)
 			writer.writerow(k)

@@ -42,6 +42,24 @@ from datetime import datetime
 
 
 #############################
+
+def get_pass():
+	password = getpass.getpass('Enter the [sudo] password:')
+	wrap = "sudo -S ls"
+	try:
+		subprocess.run(wrap, shell=True, check=True, input=password.encode(),stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	except subprocess.CalledProcessError as e:
+		print("\033[91m\033[1mIncorrect password. Please try again.\033[0m")
+		password = getpass.getpass('Enter the [sudo] password:')
+	try:
+		subprocess.run(wrap, shell=True, check=True, input=password.encode(),stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	except subprocess.CalledProcessError as e:
+		print("\033[91m\033[1mIncorrect password. Aborting Function.\033[0m")
+		raise SystemExit(1)
+	return password
+	
+#############################
+
 def get_exit(command_a, command_b):
 		exit2 = subprocess.run(command_a, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, shell=True)
 		if exit2 != 0:
@@ -358,15 +376,15 @@ def modal_singularity():
 		
 	before = str(file_paths)
 		
-	#with open(enigma_folder+'/vertebral_labeling.simg/spine.py', 'r') as arquivo_leitura:
-	#	linhas = arquivo_leitura.readlines()
-	#with open(enigma_folder+'/vertebral_labeling.simg/spine.py', 'w') as arquivo_escrita:
-	#	for linha in linhas:
-	#		if 'enigma_folder=' in linha:
-	#			linha_modificada = linha.replace('enigma_folder=', f"enigma_folder='{enigma_folder}'\n")
-	#			arquivo_escrita.write(linha_modificada)
-	#		else:
-	#			arquivo_escrita.write(linha)		
+	with open(enigma_folder+'/vertebral_labeling.simg/spine.py', 'r') as arquivo_leitura:
+		linhas = arquivo_leitura.readlines()
+	with open(enigma_folder+'/vertebral_labeling.simg/spine.py', 'w') as arquivo_escrita:
+		for linha in linhas:
+			if 'enigma_folder=' in linha:
+				linha_modificada = linha.replace('enigma_folder=', f"enigma_folder='{enigma_folder}'\n")
+				arquivo_escrita.write(linha_modificada)
+			else:
+				arquivo_escrita.write(linha)		
         	            	 		
 
 	exit_code = os.system("singularity --version")
@@ -1457,22 +1475,31 @@ def ext_docker():
 			b1.append(str(i))		
 			for j in range(len(v)):
 				if v[j][4] == '1':
-					f = j
-					w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
-					k.append(str(w))
-					b1.append(str(v[f][16]))
+					try:
+						f = j
+						w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
+						k.append(str(w))
+						b1.append(str(v[f][16]))
+					except (ValueError, IndexError):
+						pass	
 			for j in range(len(v)):		
 				if v[j][4] == '2':
-					f = j
-					w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
-					k.append(str(w))
-					b1.append(str(v[f][16]))
+					try:
+						f = j
+						w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
+						k.append(str(w))
+						b1.append(str(v[f][16]))
+					except (ValueError, IndexError):
+						pass	
 			for j in range(len(v)):
 				if v[j][4] == '3':
-					f = j
-					w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
-					k.append(str(w))
-					b1.append(str(v[f][16]))
+					try:
+						f = j
+						w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
+						k.append(str(w))
+						b1.append(str(v[f][16]))
+					except (ValueError, IndexError):
+						pass	
 			with open(csvf, 'a', newline='') as csv_file:
 				writer = csv.writer(csv_file)
 				writer.writerow(k)
@@ -1610,22 +1637,31 @@ def ext_singularity():
 			b1.append(str(i))		
 			for j in range(len(v)):
 				if v[j][4] == '1':
-					f = j
-					w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
-					k.append(str(w))
-					b1.append(str(v[f][16]))
+					try:
+						f = j
+						w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
+						k.append(str(w))
+						b1.append(str(v[f][16]))
+					except (ValueError, IndexError):
+						pass	
 			for j in range(len(v)):		
 				if v[j][4] == '2':
-					f = j
-					w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
-					k.append(str(w))
-					b1.append(str(v[f][16]))
+					try:
+						f = j
+						w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
+						k.append(str(w))
+						b1.append(str(v[f][16]))
+					except (ValueError, IndexError):
+						pass	
 			for j in range(len(v)):
 				if v[j][4] == '3':
-					f = j
-					w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
-					k.append(str(w))
-					b1.append(str(v[f][16]))
+					try:
+						f = j
+						w = ((float(v[f][6])*math.cos((math.radians(float(v[f][8]))))+((float(v[f][6]))*math.cos(math.radians(float(v[f][10]))))))/(2)
+						k.append(str(w))
+						b1.append(str(v[f][16]))
+					except (ValueError, IndexError):
+						pass	
 			with open(csvf, 'a', newline='') as csv_file:
 				writer = csv.writer(csv_file)
 				writer.writerow(k)
