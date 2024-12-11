@@ -1710,10 +1710,13 @@ def ext_docker():
 		command191='docker exec -it vertebral_labeling rm -r /home/'+os.path.basename(str(i))
 		command192='sudo docker exec -it vertebral_labeling rm -r /home/'+os.path.basename(str(i))
 		os.system(command191)
-		with open(str(i)+'/'+os.path.basename(str(i))+'_csa.csv', 'r', encoding='utf-8') as file:
-			sp = csv.reader(file)
-			for row in sp:
-				v.append(row)		
+		try:
+			with open(str(i)+'/'+os.path.basename(str(i))+'_csa.csv', 'r', encoding='utf-8') as file:
+				sp = csv.reader(file)
+				for row in sp:
+					v.append(row)	
+		except FileNotFoundError:
+			pass
 		k.append(os.path.basename(str(i)))
 		b1.append(os.path.basename(str(i)))		
 		for j in range(len(v)):
@@ -1906,11 +1909,15 @@ def ext_singularity():
 		try:		
 			subprocess.run(cmdd_1, shell=True, check=True)
 		except subprocess.CalledProcessError:
-			subprocess.run(cmdd_2, shell=True, check=True)					
-		with open(str(i)+'/'+os.path.basename(str(i))+'_csa.csv', 'r', encoding='utf-8') as file:
-			sp = csv.reader(file)
-			for row in sp:
-				v.append(row)		
+			subprocess.run(cmdd_2, shell=True, check=True)	
+
+		try:
+			with open(str(i)+'/'+os.path.basename(str(i))+'_csa.csv', 'r', encoding='utf-8') as file:
+				sp = csv.reader(file)
+				for row in sp:
+					v.append(row)
+		except FileNotFoundError:
+			pass
 		k.append(os.path.basename(str(i)))
 		b1.append(os.path.basename(str(i)))		
 		for j in range(len(v)):
