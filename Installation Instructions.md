@@ -14,7 +14,9 @@
    **OR**  
   Singularity - [Installation](https://github.com/apptainer/singularity/blob/master/INSTALL.md)  
    **OR**  
-  Apptainer - [Installation](https://apptainer.org/docs/user/latest/quick_start.html#quick-installation)  
+  Apptainer - [Installation](https://apptainer.org/docs/user/latest/quick_start.html#quick-installation)
+
+  **III)** CUDA Container Toolkit [Installation](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)  
 
 - We strongly reccomend the GPU integration for optimizing the prediction time of the pipeline. However, inference times are typically still manageable on CPU and MPS (Apple M1/M2). If using a GPU, it should have at least 4 GB of available (unused) VRAM.    
 
