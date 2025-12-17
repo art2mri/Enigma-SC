@@ -137,7 +137,7 @@ And finally, the **Pack and Send** button will require the user to (following th
 
 !["step10"](/img/step-10.png)  
 
-### Test data
+## 8) Test data  
 
 If you need a test T1-weighted image to run or validate the Enigma-SC pipeline, you can directly download a publicly available example T1 structural brain image from the UK Biobank:
 
@@ -153,5 +153,6 @@ This example dataset is publicly accessible and can be used to test the pipeline
 
 
  
+
 
 
