@@ -135,7 +135,17 @@ $$
 
 And finally, the **Pack and Send** button will require the user to (following the same approach as before, of choosing platforms and files) select all individuals folders within the **PREPARED FOLDER** whom they wish to compress into a single .zip file. This will include the output generated throughout the previous steps. The compressed files for each individual will be placed within the **PREPARED FOLDER** (excluding the raw .nii.gz image), and they will be ready to be sent!  
 
-!["step10"](/img/step-10.png)
+!["step10"](/img/step-10.png)  
+
+### Test data
+
+If you need a test T1-weighted image to run or validate the Enigma-SC pipeline, you can directly download a publicly available example T1 structural brain image from the UK Biobank:
+
+https://biobank.ndph.ox.ac.uk/ukb/field.cgi?id=20252
+
+Under “Resources”, click “Example T1 structural brain image in NIFTI format”.
+
+This example dataset is publicly accessible and can be used to test the pipeline without sharing any restricted data.  
 
 
 
@@ -143,4 +153,5 @@ And finally, the **Pack and Send** button will require the user to (following th
 
 
  
+
 
