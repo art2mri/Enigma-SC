@@ -147,8 +147,11 @@ Under “Resources”, click “Example T1 structural brain image in NIFTI forma
 This example dataset is publicly accessible and can be used to test the pipeline without sharing any restricted data.  
 
 
+
 <p align="center">
-<a href='https://mapmyvisitors.com/web/1c3iz'><img src='https://mapmyvisitors.com/map.png?cl=0e1633&w=384&t=tt&d=yAFAemaa717eVDdp2-3mV1kwhJjAQFAboMbQorhTj8Y&co=0b4975&ct=cdd4d9'/></a>
+ 	<a href="https://mapmyvisitors.com/web/1c3iz">
+  		<img src="https://mapmyvisitors.com/map.png?cl=0e1633&w=384&t=tt&d=yAFAemaa717eVDdp2-3mV1kwhJjAQFAboMbQorhTj8Y&co=0b4975&ct=cdd4d9" width="384" />
+ 	</a>
 </p>
 
 
