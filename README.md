@@ -155,7 +155,11 @@ This example dataset is publicly accessible and can be used to test the pipeline
 </p>
 
 
-
+<p align="center">
+ 	<a href="https://clustrmaps.com/site/1c9kn">
+		  <img src="//clustrmaps.com/map_v2.png?cl=0e1633&w=384&t=tt&d=krCJyW10zZBSX62WNkBTEaiTQ-XwxBV21vLOmRqwMG4&co=0b4975&ct=cdd4d9" width="384" />
+ 	</a>
+</p>
  
 
 
