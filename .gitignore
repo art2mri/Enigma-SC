@@ -1,0 +1,13 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Container sandbox (~25 GB)
+vertebral_labeling.simg/
+
+# IDE local
+.cursor/
+.vscode/
+.idea/
