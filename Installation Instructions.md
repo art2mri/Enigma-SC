@@ -8,7 +8,7 @@
 
 - The **Enigma-SC** fundamentally runs its application on top of other tools, so it's necessary for the user to install of the following applications:
   
-  **I)** Python 3.11.5 - [Installation](https://www.python.org/downloads/)
+  **I)** Python 3.11+ (tested on 3.11 and 3.12) - [Installation](https://www.python.org/downloads/)
   
   **II)** Docker Engine - [Installation](https://docs.docker.com/engine/install/ubuntu/)  
    **OR**  
@@ -44,7 +44,10 @@ pip install virtualenv
 apt install python3-venv
 ```
  ```bash
-python3.11 -m venv venv
+python3 -m venv venv
+```
+ ```bash
+# Alternatively: python3 -m venv .venv
 ```
  ```bash
 source venv/bin/activate
@@ -80,12 +83,13 @@ deactivate
   the docker group:
   
    - ```bash
-     sudo groupadd docker
+     sudo groupadd docker 2>/dev/null || true
+     sudo usermod -aG docker $USER
+     newgrp docker
+     docker run hello-world
      ```
      
-   - ```bash
-     sudo groupadd docker
-     ```     
+  **NOTE:** After `usermod`, you need a new terminal session (logout/login or `newgrp docker`) for group membership to take effect.
   ### Singularity
 
   If you have correctly installed Singularity, open the Linux terminal **inside of the Enigma-SC folder** and run the following command:
@@ -106,14 +110,25 @@ deactivate
     chmod -R 777 vertebral_labeling.simg
     ```  
   - After that, a folder named ***vertebral_labeling.simg*** will appear on the **Enigma-SC** folder. Please don't rename it.  
-  
+
+### Environment check
+
+Before your first run, open a terminal **inside of the Enigma-SC folder** and type:
+
+```bash
+python3 check_env.py
+```
+
+The script reports what is missing (Python, tkinter, Docker/Singularity, container image or sandbox, disk space).
 
 ## 4) Running Enigma-SC  
 
 To run the **Enigma-SC** software and open the interface, open a terminal **inside of the Enigma-SC folder** and type:  
 
  ```bash
-source venv/bin/activate  
+source venv/bin/activate
+# Alternatively: source .venv/bin/activate
+python3 check_env.py
 ./Enigma-SC.sh
 ```
 If you are running **Enigma-SC** in a server, or if you couldn`t install all the packages listed on the section **2) Download and Install Enigma-SC**, you can run the pipeline without opening the GUI, via command line, by opening a terminal **inside of the Enigma-SC folder** and typing:  
@@ -124,17 +139,18 @@ If you are running **Enigma-SC** in a server, or if you couldn`t install all the
 [command line tutorial](/command%20line%20TUTORIAL.md)  
  
 ## 5) Uninstalling Enigma-SC     
- 
 
-
-
-
-
-
-  
-   
-  
-
-  
-
+1. Deactivate the virtual environment if active: `deactivate`
+2. Remove the project folder: `rm -rf ~/Enigma-SC` (adjust path as needed)
+3. Remove the Docker container and image:
+   ```bash
+   docker stop vertebral_labeling 2>/dev/null
+   docker rm vertebral_labeling 2>/dev/null
+   docker rmi art2mri/vertebral_labeling:3.0
+   ```
+4. Remove the Singularity/Apptainer sandbox (inside the Enigma-SC folder, before deleting it):
+   ```bash
+   rm -rf vertebral_labeling.simg/
+   ```
+5. Optional — remove GUI Python packages: `pip uninstall Pillow tkfilebrowser`
   
