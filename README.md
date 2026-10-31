@@ -1,6 +1,10 @@
 # Enigma-SC
 An optimized deep learning-based method for upper spinal cord vertebral labeling.
 
+> [!TIP]
+> **Looking for an automated, non-interactive Docker pipeline?**  
+> An automated Docker version of Enigma-SC that runs without any GUI or interactive terminal prompts is available at [https://github.com/art2mri/pipeline-enigma-cli](https://github.com/art2mri/pipeline-enigma-cli).
+
 # What is Enigma-SC ?  
 The Enigma Spinal Cord (Enigma-SC) pipeline is a harmonized tool devoted to assess the upper spinal cord acquired on brain T1-weighted images using, mainly, the Spinal Cord Toolbox (SCT, De Leener et al, 2017). Although this newest version encompasses a deep learning algorithm to automatically identify the spinal cord vertebral labels instead of using the automated tool provided by the SCT. This feature has been optimized to deal with severely atrophied and curved spinal cords. 
 
@@ -10,6 +14,17 @@ De Leener B, Lévy S, Dupont SM, Fonov VS, Stikov N, Louis Collins D, Callot V, 
 Enigma-SC needs brain T1-weighted images covering, at least, C2 vertebral level to work. This pipeline standardizes the computation of cross-sectional area (CSA) and eccentricity provided by the SCT (De Leener et al, 2017) in a fully automated fashion way. The spinal cord vertebral labeling was developed using deep learning algorithms (nnUnet) (Isensee et al., 2020) on a training dataset composed by 293 healthy controls and 293 subjects with molecular confirmation of inherited cerebellar ataxias (41 SCA1, 34 SCA2, 90 SCA3, 14 SCA6 and 114 Friedreich's Ataxia) from 11 sites worldwide (University of Campinas-Brazil, Monash University-Australia, University of Minnesota-USA, RWTH Aachen University-Germany, University of Duisburg-Essen-Germany, University Hospital of Tübingen-Germany, Pitié-Salpêtrière University-France, Universidad Nacional Autonoma de Mexico-Mexico, Federal University of Paraná-Brazil, Fondazione IRCCS Instituto Neurologico Carlo Besta-Italy, Radboud University Medical Center-Netherlands).  
 
 Isensee, F., Jaeger, P. F., Kohl, S. A. A., Petersen, J., & Maier-Hein, K. H. (2020, December 7). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature Methods, 18(2), 203–211. https://doi.org/10.1038/s41592-020-01008-z.  
+
+## Citation
+
+Please cite the following paper when using Enigma-SC:
+
+```text
+Jarola, G.M., Shiraishi, D.H. et al.
+A deep learning framework for automated cervical spinal cord vertebral labeling and morphometric extraction from brain MRI with large-scale multicenter validation.
+npj Digit. Med. (2026).
+https://doi.org/10.1038/s41746-026-03403-w
+```
 
 # Getting started
 

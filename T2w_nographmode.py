@@ -258,8 +258,8 @@ def modal_docker():
 		if 'vertebral_labeling' in result:
 			os.system('docker rm vertebral_labeling')
 						
-	loww1='docker run -itd --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:3.0'
-	loww2='docker run -itd --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:3.0'
+	loww1='docker run -itd --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:5.0'
+	loww2='docker run -itd --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:5.0'
 	
 	try:
 		subprocess.run(loww1, shell=True, check=True, stderr=subprocess.DEVNULL)
@@ -562,11 +562,11 @@ def docker():
 			os.system('docker rm vertebral_labeling')																	
 	try:
     		subprocess.run('nvidia-smi', check=True)
-    		docker_command = 'docker run -itd --gpus all --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:3.0'
+    		docker_command = 'docker run -itd --gpus all --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:5.0'
 	except FileNotFoundError as gpu_error:
-    		docker_command = 'docker run -itd --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:3.0'
+    		docker_command = 'docker run -itd --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:5.0'
 	except subprocess.CalledProcessError as gpu_error:
-    		docker_command = 'docker run -itd --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:3.0'	
+    		docker_command = 'docker run -itd --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:5.0'	
 	try:
     		subprocess.run(docker_command, check=True)
 	except FileNotFoundError as e:
@@ -931,11 +931,11 @@ def reg_aut_docker():
 			os.system('docker rm vertebral_labeling')																	
 	try:
     		subprocess.run('nvidia-smi', check=True)
-    		docker_command = 'docker run -itd --gpus all --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:3.0'
+    		docker_command = 'docker run -itd --gpus all --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:5.0'
 	except FileNotFoundError as gpu_error:
-    		docker_command = 'docker run -itd --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:3.0'
+    		docker_command = 'docker run -itd --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:5.0'
 	except subprocess.CalledProcessError as gpu_error:
-    		docker_command = 'docker run -itd --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:3.0'	
+    		docker_command = 'docker run -itd --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:5.0'	
 	try:
     		subprocess.run(docker_command, check=True)
 	except FileNotFoundError as e:
@@ -1435,11 +1435,11 @@ def ext_docker():
 			os.system('docker rm vertebral_labeling')																	
 	try:
     		subprocess.run('nvidia-smi', check=True)
-    		docker_command = 'docker run -itd --gpus all --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:3.0'
+    		docker_command = 'docker run -itd --gpus all --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:5.0'
 	except FileNotFoundError as gpu_error:
-    		docker_command = 'docker run -itd --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:3.0'
+    		docker_command = 'docker run -itd --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:5.0'
 	except subprocess.CalledProcessError as gpu_error:
-    		docker_command = 'docker run -itd --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:3.0'	
+    		docker_command = 'docker run -itd --ipc=host --name vertebral_labeling art2mri/vertebral_labeling:5.0'	
 	try:
     		subprocess.run(docker_command, check=True)
 	except FileNotFoundError as e:
