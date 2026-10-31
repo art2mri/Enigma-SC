@@ -11,6 +11,17 @@ Enigma-SC needs brain T1-weighted images covering, at least, C2 vertebral level 
 
 Isensee, F., Jaeger, P. F., Kohl, S. A. A., Petersen, J., & Maier-Hein, K. H. (2020, December 7). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature Methods, 18(2), 203–211. https://doi.org/10.1038/s41592-020-01008-z.  
 
+## Citation
+
+Please cite the following paper when using Enigma-SC:
+
+```text
+Jarola, G.M., Shiraishi, D.H. et al.
+A deep learning framework for automated cervical spinal cord vertebral labeling and morphometric extraction from brain MRI with large-scale multicenter validation.
+npj Digit. Med. (2026).
+https://doi.org/10.1038/s41746-026-03403-w
+```
+
 # Getting started
 
 ## Read these before you start:    
