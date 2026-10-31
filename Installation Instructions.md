@@ -1,5 +1,9 @@
 # Installation Instructions
 
+> [!TIP]
+> **Non-interactive Docker Option**:  
+> If you prefer a Docker version that runs automatically without any interactive prompts or manual steps, check out [https://github.com/art2mri/pipeline-enigma-cli](https://github.com/art2mri/pipeline-enigma-cli).
+
 ## 1) System Requirements  
 
 - To install **Enigma-SC** at least 40 GB of free space is required in your hard disk.    

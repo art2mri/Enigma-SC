@@ -1,6 +1,10 @@
 # Enigma-SC
 An optimized deep learning-based method for upper spinal cord vertebral labeling.
 
+> [!TIP]
+> **Looking for an automated, non-interactive Docker pipeline?**  
+> An automated Docker version of Enigma-SC that runs without any GUI or interactive terminal prompts is available at [https://github.com/art2mri/pipeline-enigma-cli](https://github.com/art2mri/pipeline-enigma-cli).
+
 # What is Enigma-SC ?  
 The Enigma Spinal Cord (Enigma-SC) pipeline is a harmonized tool devoted to assess the upper spinal cord acquired on brain T1-weighted images using, mainly, the Spinal Cord Toolbox (SCT, De Leener et al, 2017). Although this newest version encompasses a deep learning algorithm to automatically identify the spinal cord vertebral labels instead of using the automated tool provided by the SCT. This feature has been optimized to deal with severely atrophied and curved spinal cords. 
 

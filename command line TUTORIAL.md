@@ -1,5 +1,9 @@
 ## Command Line Tutorial
 
+> [!TIP]
+> **Looking for a non-interactive pipeline?**  
+> For batch automation and headless processing without numeric menus or interactive input prompts, an automated Docker version is available at [https://github.com/art2mri/pipeline-enigma-cli](https://github.com/art2mri/pipeline-enigma-cli).
+
 ### Use this alternative only if you cannot install the GUI for some reason
 
 To visualize the MENU, open a terminal inside of the **Enigma-SC** folder and type: `./nographmode.sh` 
